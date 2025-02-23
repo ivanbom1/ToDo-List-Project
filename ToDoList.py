@@ -45,14 +45,39 @@ class ToDoList:
 
 todo_list = ToDoList()
 
-todo_list.add_task("Do my HW", "French class homework", False)
+start = True
+while start == True:
 
-todo_list.add_task("Laundry", "Do my laundry", False)
+    print("\n(1) - Show your tasks"
+          "\n(2) - Add a task"
+          "\n(3) - Remove a task"
+          "\n(4) - Sort your tasks by date"
+          "\n(5) - Tick a task"
+          "\n(6) - Quit")
+    op = int(input("Choose an operation: "))
 
-todo_list.add_task("Algebra", "Last assignment", False)
-
-todo_list.show_tasks()
-
-todo_list.tick_task("Algebra")
-
-todo_list.show_tasks()
+    if op == 1:
+        print("This is your tasks: ")
+        todo_list.show_tasks()
+    elif op == 2:
+        title = input("Enter your task's title: ")
+        description = input("Enter your task's description: ")
+        completed = False
+        todo_list.add_task(title, description, completed)
+        print(f"{title} task has been added!")
+    elif op == 3:
+        title = input("Enter your task's title: ")
+        todo_list.remove_task(title)
+        print(f"{title} task has been removed!")
+    elif op == 4:
+        todo_list.show_tasks()
+        print("Tasklist was sorted successfully!")
+    elif op == 5:
+        title = input("Enter your task's title: ")
+        todo_list.tick_task(title)
+        print(f"{title} task has been done!")
+    elif op == 6:
+        start = False
+        print("Session ended!")
+    else:
+        raise NotImplementedError
